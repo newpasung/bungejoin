@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">BungeJoin</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="input_account">输入账号/字母或数字</string>
+    <string name="input_password">输入密码/16位内数字字母</string>
+    <string name="login">登 录</string>
+    <string name="register">注 册</string>
+    <string name="home">主页</string>
+    <string name="world">世界</string>
+    <string name="hobby">爱好</string>
+    <string name="art">美术</string>
+    <string name="music">音乐</string>
+    <string name="photography">摄影</string>
+    <string name="game">游戏</string>
+    <string name="reading">阅读</string>
+    <string name="picture">图片</string>
+</resources>

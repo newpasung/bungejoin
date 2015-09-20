@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_global"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/summerparty4"
+    tools:context=".FirstPage">
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height_normal"
+        android:background="@color/summerparty2"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_top_chooser"
+            android:layout_width="@dimen/layout_width_normal"
+            android:layout_height="@dimen/layout_height_normal"
+            android:layout_marginRight="@dimen/margin_large"
+            android:background="@color/summerparty4" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:src="@drawable/bungejoin_text"
+        android:layout_below="@+id/ll_top"
+        android:layout_centerHorizontal="true"
+        android:layout_width="200dp"
+        android:layout_height="80dp" />
+
+    <EditText
+        android:id="@+id/et_account"
+        android:padding="@dimen/padding_small"
+        android:singleLine="true"
+        android:background="@drawable/background_roundangle_white"
+        android:layout_below="@+id/iv_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:hint="@string/input_account"
+        android:textSize="@dimen/textsize_normal"
+        android:layout_height="@dimen/layout_height_middle" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:singleLine="true"
+        android:padding="@dimen/padding_small"
+        android:background="@drawable/background_roundangle_white"
+        android:layout_below="@+id/et_account"
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:hint="@string/input_password"
+        android:textSize="@dimen/textsize_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_height="@dimen/layout_height_middle" />
+
+    <Button
+        android:id="@+id/btn_login_register"
+        android:layout_below="@+id/et_password"
+        android:layout_marginTop="@dimen/margin_big"
+        android:layout_centerHorizontal="true"
+        android:background="@color/summerparty1"
+        android:text="@string/login"
+        android:textSize="@dimen/textsize_big"
+        android:textStyle="bold"
+        android:layout_width="250dp"
+        android:layout_height="@dimen/layout_height_normal" />
+
+    <Button
+        android:id="@+id/btn_bottom_chooser"
+        android:text="@string/register"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="@dimen/layout_width_normal"
+        android:layout_height="@dimen/layout_height_normal"
+        android:layout_marginRight="@dimen/margin_large"
+        android:background="@color/summerparty3" />
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string-array name="home_part">
+        <item>世界</item>
+        <item >主页</item>
+        <item>爱好</item>
+    </string-array>
+</resources>

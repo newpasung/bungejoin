@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.season.bungejoin.bungejoin" >
+
+    <meta-data android:name="AA_DB_NAME" android:value="Pickrand.db" />
+    <meta-data android:name="AA_DB_VERSION" android:value="1" />
+    <meta-data
+        android:name="AA_MODELS"
+        android:value="com.season.bungejoin.bungejoin.Model.User" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".JoinApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".Activity.LeadActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.LoginActivity"></activity>
+        <activity android:name=".Activity.WelcomeActivity"></activity>
+        <activity android:name=".Activity.HomePageActivity"></activity>
+        <activity android:name=".Activity.BaseActivity"></activity>
+        <activity android:name=".Activity.FillterGameActivity"></activity>
+    </application>
+
+</manifest>

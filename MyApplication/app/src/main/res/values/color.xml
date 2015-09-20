@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+//夏日PARTY
+    <color name="summerparty1">#cf2782</color>
+    <color name="summerparty2">#c4f2ef</color>
+    <color name="summerparty3">#ff9ab5</color>
+    <color name="summerparty4">#f8f9c2</color>
+    <color name="summerparty5">#ffdbe8</color>
+
+    //可爱让人愉悦的颜色！
+    <color name="happiness0">#fc3bff</color>
+    <color name="happiness2">#ff9875</color>
+    <color name="happiness1">#968cff</color>
+    <color name="happiness3">#8cff96</color>
+    <color name="happiness4">#e8ff8c</color>
+    <color name="happiness5">#fe4c40</color>
+
+    //太阳光耀
+    <color name="sunshine0">#0dfeff</color>
+    <color name="sunshine1">#0ce854</color>
+    <color name="sunshine2">#6eff00</color>
+    <color name="sunshine3">#e8d70c</color>
+    <color name="sunshine4">#ffae00</color>
+
+    //琳琅服装店
+    <color name="beauty0">#f3456d</color>
+    <color name="beauty1">#f4d95b</color>
+    <color name="beauty2">#95b55b</color>
+    <color name="beauty3">#f49930</color>
+    <color name="beauty4">#f26d26</color>
+    <color name="beauty5">#0067a6</color>
+    <color name="beauty6">#00abd8</color>
+    <color name="beauty7">#008972</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="loess">#a0522d</color>
+
+</resources>
