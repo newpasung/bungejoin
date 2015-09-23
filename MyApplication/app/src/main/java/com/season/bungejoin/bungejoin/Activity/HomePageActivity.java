@@ -1,26 +1,40 @@
 package com.season.bungejoin.bungejoin.Activity;
 
 import android.animation.ArgbEvaluator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
+import com.season.bungejoin.bungejoin.Constant.SharedPrefParameter;
+import com.season.bungejoin.bungejoin.JoinApplication;
+import com.season.bungejoin.bungejoin.Model.User;
 import com.season.bungejoin.bungejoin.R;
+import com.season.bungejoin.bungejoin.Storage.SharedPreferManager;
 import com.season.bungejoin.bungejoin.Utils.DensityUtils;
 import com.season.bungejoin.bungejoin.Utils.HttpHelpers.HttpClient;
 import com.season.bungejoin.bungejoin.Utils.HttpHelpers.JsonResponseHandler;
+import com.season.bungejoin.bungejoin.fragment.BaseFragment;
 import com.season.bungejoin.bungejoin.fragment.HobbyFragment;
 import com.season.bungejoin.bungejoin.fragment.HomeFragment;
 import com.season.bungejoin.bungejoin.fragment.WorldFragment;
 
 import org.json.JSONObject;
 
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -43,6 +57,11 @@ public class HomePageActivity extends BaseActivity {
     int backgroundColor;
     int curIndex;
     boolean isCheckNeeded=true;
+    LinearLayout linearLayout;
+    HobbyFragment mHobbyFragment;
+    HomeFragment mHomeFragment;
+    WorldFragment mWorldFragment;
+    List<Fragment> fragments;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,15 +73,29 @@ public class HomePageActivity extends BaseActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if(isCheckNeeded){
+        ViewGroup.LayoutParams params =linearLayout.getLayoutParams();
+        int h =DensityUtils.getWindowHeight(HomePageActivity.this)
+                -params.height-DensityUtils.getStatusBarHei(this);
+        int w=DensityUtils.getWindowWidth(HomePageActivity.this);
+        mHomeFragment.setWidth(w);
+        mHomeFragment.setHeight(h);
+        if(isCheckNeeded&&hasFocus){
             checkAccount();
         }
     }
 
     protected void ini() {
+        fragments=new ArrayList<>();
+        mWorldFragment=WorldFragment.newInstance();
+        mHomeFragment=HomeFragment.newInstance();
+        mHobbyFragment=HobbyFragment.newInstance();
+        fragments.add(mWorldFragment);
+        fragments.add(mHomeFragment);
+        fragments.add(mHobbyFragment);
         int[] btn_id = {R.id.btn_world, R.id.btn_home, R.id.btn_hobby};
         titles = this.getResources().getStringArray(R.array.home_part);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+        linearLayout=(LinearLayout)findViewById(R.id.bottom_bar);
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         viewPager.setCurrentItem(1, true);
         curIndex = 1;
@@ -94,12 +127,7 @@ public class HomePageActivity extends BaseActivity {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position){
-                case 0:{return WorldFragment.newInstance();}
-                case 1:{return HomeFragment.newInstance();}
-                case 2:{return HobbyFragment.newInstance();}
-                default: return null;
-            }
+            return fragments.get(position);
         }
 
         @Override
@@ -201,7 +229,7 @@ public class HomePageActivity extends BaseActivity {
 
     protected void checkAccount(){
         RequestParams params=new RequestParams();
-        HttpClient.post(this,"user/checktoken",params,new JsonResponseHandler(){
+        HttpClient.post(this,"user/checktoken",params,new JsonResponseHandler(HomePageActivity.this){
             @Override
             public void onSuccess(JSONObject object) {
                 super.onSuccess(object);
@@ -210,4 +238,8 @@ public class HomePageActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

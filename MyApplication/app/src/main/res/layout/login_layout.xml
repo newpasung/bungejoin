@@ -32,6 +32,8 @@
 
     <EditText
         android:id="@+id/et_account"
+        android:imeOptions="actionNext"
+        android:nextFocusForward="@+id/et_password"
         android:padding="@dimen/padding_small"
         android:singleLine="true"
         android:background="@drawable/background_roundangle_white"
@@ -44,6 +46,7 @@
 
     <EditText
         android:id="@+id/et_password"
+        android:imeOptions="actionDone"
         android:singleLine="true"
         android:padding="@dimen/padding_small"
         android:background="@drawable/background_roundangle_white"

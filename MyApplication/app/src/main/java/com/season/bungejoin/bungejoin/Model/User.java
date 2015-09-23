@@ -38,6 +38,8 @@ public class User extends Model {
     @Column(name = "avatar")
     public String avatar;
 
+    @Column(name ="cover")
+    public String cover;
     public User() {
         super();
     }
@@ -71,6 +73,9 @@ public class User extends Model {
             }
             if(jsonObject.has("avatar")){
                 user.avatar=jsonObject.getString("avatar");
+            }
+            if(jsonObject.has("cover")){
+                user.cover=jsonObject.getString("cover");
             }
             user.save();
         } catch (JSONException e) {

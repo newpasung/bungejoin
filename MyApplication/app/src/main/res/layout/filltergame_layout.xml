@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 <com.season.bungejoin.bungejoin.widget.FillterView
+    android:layout_centerInParent="true"
     android:id="@+id/fillterview"
     android:src="@drawable/kitty"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_width="200dp"
+    android:layout_height="200dp" />
     <LinearLayout
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/margin_big"

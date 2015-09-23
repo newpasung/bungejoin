@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.season.bungejoin.bungejoin.Activity.FillterGameActivity;
@@ -21,28 +20,29 @@ import com.season.bungejoin.bungejoin.R;
 /**
  * Created by Administrator on 2015/9/19.
  */
-public class HobbyFragment extends Fragment {
+public class HobbyFragment extends BaseFragment {
 
-    String []catagory={"美术","音乐","阅读","摄影","图片","游戏"};
-    int []colors;
-    String [][] text;
+    String[] catagory = {"美术", "音乐", "阅读", "摄影", "图片", "游戏"};
+    int[] colors;
+    String[][] text;
     Class[][] clses;
-    ClickListener listener =new ClickListener() {
+    ClickListener listener = new ClickListener() {
         @Override
         public void onClick(View v, Class cls) {
-            if(cls!=null){
-                startActivity(new Intent(getContext(),cls));
-            }else{
-                Toast.makeText(getContext(),"现在没做好",Toast.LENGTH_SHORT).show();
+            if (cls != null) {
+                startActivity(new Intent(getContext(), cls));
+            } else {
+                Toast.makeText(getContext(), "现在没做好", Toast.LENGTH_SHORT).show();
             }
         }
     };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        colors=getColors();
-        clses=getClasses();
-        text=getTextDate();
+        colors = getColors();
+        clses = getClasses();
+        text = getTextDate();
     }
 
     @Nullable
@@ -83,10 +83,10 @@ public class HobbyFragment extends Fragment {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
             MyViewHolder holder = (MyViewHolder) viewHolder;
-            LinearLayoutManager manager=new LinearLayoutManager(getContext());
+            LinearLayoutManager manager = new LinearLayoutManager(getContext());
             manager.setOrientation(LinearLayoutManager.HORIZONTAL);
             holder.recyclerView.setLayoutManager(manager);
-            HobbyLeaderAdapter adapter=new HobbyLeaderAdapter(text[i],colors,clses[i]);
+            HobbyLeaderAdapter adapter = new HobbyLeaderAdapter(text[i], colors, clses[i]);
             adapter.setListener(listener);
             holder.recyclerView.setAdapter(adapter);
             holder.recyclerView.setHasFixedSize(true);
@@ -95,29 +95,30 @@ public class HobbyFragment extends Fragment {
         public class MyViewHolder extends RecyclerView.ViewHolder {
             public RecyclerView recyclerView;
             public LinearLayout linearLayout;
+
             public MyViewHolder(View itemView) {
                 super(itemView);
-                linearLayout=(LinearLayout)itemView;
-                recyclerView = (RecyclerView)linearLayout.findViewById(R.id.recyclerview);
+                linearLayout = (LinearLayout) itemView;
+                recyclerView = (RecyclerView) linearLayout.findViewById(R.id.recyclerview);
             }
         }
 
     }
 
-    protected int[] getColors(){
-        int [] c={R.color.beauty0,R.color.beauty1,R.color.beauty2,
-                R.color.beauty3,R.color.beauty4,R.color.beauty5,
-                R.color.beauty6,R.color.beauty7,};
-        int[] copy=c;//避免提示错误的强迫症
-        for(int i=0;i<c.length;i++){
-            copy[i]=getResources().getColor(c[i]);
+    protected int[] getColors() {
+        int[] c = {R.color.beauty0, R.color.beauty1, R.color.beauty2,
+                R.color.beauty3, R.color.beauty4, R.color.beauty5,
+                R.color.beauty6, R.color.beauty7,};
+        int[] copy = c;//避免提示错误的强迫症
+        for (int i = 0; i < c.length; i++) {
+            copy[i] = getResources().getColor(c[i]);
         }
         return copy;
     }
 
-    protected Class[][] getClasses(){
-        Class[][] cls ={
-            {FillterGameActivity.class},
+    protected Class[][] getClasses() {
+        Class[][] cls = {
+                {FillterGameActivity.class},
                 {},
                 {},
                 {},
@@ -127,13 +128,13 @@ public class HobbyFragment extends Fragment {
         return cls;
     }
 
-    protected String[][] getTextDate(){
-        String [][]text={{"填色"}
-                ,{"asd","asdf","wla;sdj","aspoes"}
-                ,{",d.tuo","aseyras","23gys","asdqwghsd","asdascx"}
-                ,{"xxcgsjj","aseyras","789787","aseyras"}
-                ,{"werw","aseyras","646546","aseyras","aseyras"}
-                ,{"46546","hoyue","aseyras","aseyras","aseyras"}};
+    protected String[][] getTextDate() {
+        String[][] text = {{"填色"}
+                , {"asd", "asdf", "wla;sdj", "aspoes"}
+                , {",d.tuo", "aseyras", "23gys", "asdqwghsd", "asdascx"}
+                , {"xxcgsjj", "aseyras", "789787", "aseyras"}
+                , {"werw", "aseyras", "646546", "aseyras", "aseyras"}
+                , {"46546", "hoyue", "aseyras", "aseyras", "aseyras"}};
         return text;
     }
 }

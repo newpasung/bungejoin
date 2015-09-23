@@ -2,6 +2,11 @@ package com.season.bungejoin.bungejoin.Activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,7 +21,6 @@ public class FillterGameActivity extends BaseActivity {
     boolean isNeededInit = true;
     ProgressDialog dialog;
     Button[] mBtnChooser = new Button[6];
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,16 @@ public class FillterGameActivity extends BaseActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            int posX = (int) event.getX();
+            int posY = (int) event.getY();
+            Log.i("COORDINATE_ACTIVITY", "X->" + posX + "Y->" + posY);
+        }
+        return super.onTouchEvent(event);
     }
 
     @Override

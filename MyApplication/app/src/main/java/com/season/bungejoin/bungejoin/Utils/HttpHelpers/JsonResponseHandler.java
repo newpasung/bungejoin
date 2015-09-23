@@ -1,9 +1,12 @@
 package com.season.bungejoin.bungejoin.Utils.HttpHelpers;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.season.bungejoin.bungejoin.JoinApplication;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,6 +16,13 @@ import org.json.JSONObject;
  * Created by Administrator on 2015/9/8.
  */
 public class JsonResponseHandler extends JsonHttpResponseHandler {
+
+    Context mContext;
+
+    public JsonResponseHandler(Context mContext) {
+        this.mContext = mContext;
+    }
+
     @Override
     public void onFailure(int statusCode, org.apache.http.Header[] headers, String responseString, Throwable throwable) {
         super.onFailure(statusCode, headers, responseString, throwable);
@@ -62,7 +72,7 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
     }
 
     public void onFailure(){
-        Log.i("HttpClient","onFailure");
+        Toast.makeText(mContext,"some happened with http",Toast.LENGTH_SHORT).show();
     }
 
 }

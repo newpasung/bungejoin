@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,8 +21,6 @@ import com.season.bungejoin.bungejoin.Utils.DensityUtils;
 import com.season.bungejoin.bungejoin.Utils.HttpHelpers.HttpClient;
 import com.season.bungejoin.bungejoin.Utils.HttpHelpers.JsonResponseHandler;
 
-import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -127,7 +124,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 int distance = DensityUtils.getWindowHeight(LoginActivity.this)
-                        - mBtnbottom_chooser.getHeight() - DensityUtils.getStatusBar(LoginActivity.this);
+                        - mBtnbottom_chooser.getHeight() - DensityUtils.getStatusBarHei(LoginActivity.this);
                 mBtnTopChooser.setClickable(false);
                 mBtnbottom_chooser.setClickable(true);
                 mBtnTopChooser.startAnimation(AnimationHelper.moveDown(distance));
@@ -140,7 +137,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 int distance = DensityUtils.getWindowHeight(LoginActivity.this)
-                        - mBtnbottom_chooser.getHeight() - DensityUtils.getStatusBar(LoginActivity.this);
+                        - mBtnbottom_chooser.getHeight() - DensityUtils.getStatusBarHei(LoginActivity.this);
                 mBtnbottom_chooser.setClickable(false);
                 mBtnTopChooser.setClickable(true);
                 mBtnbottom_chooser.startAnimation(AnimationHelper.moveUp(distance));
@@ -167,14 +164,14 @@ public class LoginActivity extends BaseActivity {
         String password=mEtpassword.getText().toString();
         if(TextUtils.isEmpty(account)||TextUtils.isEmpty(password)){
             mEtpassword.setText("");
-            mEtpassword.setError("账号或密码错误");
+            mEtpassword.setError("请正确填写");
             mEtpassword.requestFocus();
             return ;
         }
         RequestParams params =new RequestParams();
         params.put("account",account);
         params.put("password",password);
-        HttpClient.post(LoginActivity.this,"user/login",params,new JsonResponseHandler(){
+        HttpClient.post(LoginActivity.this,"user/login",params,new JsonResponseHandler(LoginActivity.this){
             @Override
             public void onSuccess(JSONObject object) {
                 super.onSuccess(object);
@@ -214,7 +211,7 @@ public class LoginActivity extends BaseActivity {
         RequestParams params =new RequestParams();
         params.put("account",account);
         params.put("password",passwd);
-        HttpClient.post(LoginActivity.this,"user/register",params,new JsonResponseHandler(){
+        HttpClient.post(LoginActivity.this,"user/register",params,new JsonResponseHandler(LoginActivity.this){
             @Override
             public void onSuccess(JSONObject object) {
                 super.onSuccess(object);

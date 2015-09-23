@@ -54,6 +54,7 @@ public class FillterView extends ImageView {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             int posX = (int) event.getX();
             int posY = (int) event.getY();
+            Log.i("COORDINATE_VIEW","X->"+posX+"Y->"+posY);
             iniPixels = new int[mBitmap.getWidth() * mBitmap.getHeight()];
             mBitmap.getPixels(iniPixels, 0, mBitmap.getWidth(), 0, 0, mBitmap.getWidth(), mBitmap.getHeight());
             curColor = mBitmap.getPixel(posX, posY);

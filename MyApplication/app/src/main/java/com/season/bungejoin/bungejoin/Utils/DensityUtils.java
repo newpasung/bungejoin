@@ -30,7 +30,7 @@ public class DensityUtils {
         return metrics.heightPixels;
     }
 
-    public static int getStatusBar(Activity activity){
+    public static int getStatusBarHei(Activity activity){
         Rect frame=new Rect();
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
         return frame.top;
