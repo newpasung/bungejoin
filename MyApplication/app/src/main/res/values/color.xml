@@ -49,4 +49,8 @@
     <color name="black">#000000</color>
     <color name="loess">#a0522d</color>
 
+    <color name="blue">#1C86EE</color>
+    <color name="gray">#ADADAD</color>
+
+    <color name="background0">#eee8ab</color>
 </resources>

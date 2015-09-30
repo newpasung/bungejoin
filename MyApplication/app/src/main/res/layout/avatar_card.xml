@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/radian_normal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:scaleType="centerInside"
+        android:layout_width="@dimen/userinfo_avatarsize"
+        android:layout_height="@dimen/userinfo_avatarsize" />
+</android.support.v7.widget.CardView>

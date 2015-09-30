@@ -94,6 +94,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="happy-dns-0.2.3.2" level="project" />
     <orderEntry type="library" exported="" name="activeandroid-3.0" level="project" />
+    <orderEntry type="library" exported="" name="weiboSDKCore_3.1.2" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="httpcore-4.4.1" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-23.0.1" level="project" />

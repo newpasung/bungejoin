@@ -16,4 +16,16 @@
     <string name="game">游戏</string>
     <string name="reading">阅读</string>
     <string name="picture">图片</string>
+    <string name="ensure">确定</string>
+    <string name="cancel">取消</string>
+
+    <string name="spinner_basetype">请选择类型</string>
+    <string-array name="base_type">
+        <item>byte</item>
+        <item>short</item>
+        <item>int</item>
+        <item>long</item>
+        <item>float</item>
+        <item>double</item>
+    </string-array>
 </resources>

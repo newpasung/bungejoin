@@ -5,12 +5,13 @@ package com.season.bungejoin.bungejoin.Constant;
  */
 public class SharedPrefParameter {
     //is the first time to start the software
-    public static String ISFIRSTLOGING="isfirstlogin";
-    public static String TOKEN="token";
-    public static String CURUID="curuid";
-    public static String USERAVATAR="avatar";
-    public static String MOTTO="motto";
-    public static String EMAIL="email";
-    public static String PHONENUMBER="phonenumber";
-    public static String SEX="sex";
+    public static final String ISFIRSTLOGING="isfirstlogin";
+    //用户信息
+    public static final String TOKEN="token";
+    public static final String CURUID="curuid";
+    public static final String AVATARURLS="avatarurls";
+    public static final String AVATARCOUNT="avatarcount";
+
+    //微博信息
+//    public static final String ="";
 }

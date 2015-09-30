@@ -3,7 +3,6 @@ package com.season.bungejoin.bungejoin.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,9 +11,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.season.bungejoin.bungejoin.Activity.FillterGameActivity;
-import com.season.bungejoin.bungejoin.Adapter.HobbyLeaderAdapter;
-import com.season.bungejoin.bungejoin.Listener.ClickListener;
+import com.season.bungejoin.bungejoin.activity.BaseJavaActivity;
+import com.season.bungejoin.bungejoin.activity.FillterGameActivity;
+import com.season.bungejoin.bungejoin.adapter.HobbyLeaderAdapter;
+import com.season.bungejoin.bungejoin.listener.ClickListener;
 import com.season.bungejoin.bungejoin.R;
 
 /**
@@ -22,7 +22,7 @@ import com.season.bungejoin.bungejoin.R;
  */
 public class HobbyFragment extends BaseFragment {
 
-    String[] catagory = {"美术", "音乐", "阅读", "摄影", "图片", "游戏"};
+    String[] catagory = {"美术", "音乐", "阅读", "摄影", "图片", "其他"};
     int[] colors;
     String[][] text;
     Class[][] clses;
@@ -30,7 +30,8 @@ public class HobbyFragment extends BaseFragment {
         @Override
         public void onClick(View v, Class cls) {
             if (cls != null) {
-                startActivity(new Intent(getContext(), cls));
+                Intent intent =new Intent(getActivity(),cls);
+                getActivity().startActivity(intent);
             } else {
                 Toast.makeText(getContext(), "现在没做好", Toast.LENGTH_SHORT).show();
             }
@@ -123,7 +124,7 @@ public class HobbyFragment extends BaseFragment {
                 {},
                 {},
                 {},
-                {}
+                {BaseJavaActivity.class}
         };
         return cls;
     }
@@ -134,7 +135,7 @@ public class HobbyFragment extends BaseFragment {
                 , {",d.tuo", "aseyras", "23gys", "asdqwghsd", "asdascx"}
                 , {"xxcgsjj", "aseyras", "789787", "aseyras"}
                 , {"werw", "aseyras", "646546", "aseyras", "aseyras"}
-                , {"46546", "hoyue", "aseyras", "aseyras", "aseyras"}};
+                , {"java基础", "hoyue", "aseyras", "aseyras", "aseyras"}};
         return text;
     }
 }

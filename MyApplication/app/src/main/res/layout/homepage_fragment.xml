@@ -2,6 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <SurfaceView
+        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
     <Button
         android:id="@+id/btn_down"
         android:layout_centerHorizontal="true"
@@ -38,18 +42,25 @@
     <ViewStub
         android:id="@+id/surfacestub"
         android:layout="@layout/movingview_layout"
+        android:layout_above="@+id/bottom_achieve"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/bottom_achieve"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical"
+        android:background="@drawable/frame"
         android:layout_width="match_parent"
         android:layout_height="100dp">
-        <TextView
-            android:text="成就"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_goldegg"
+            android:src="@drawable/goldegg_clip"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_big"
+            android:layout_width="60dp"
+            android:layout_height="80dp" />
+    </RelativeLayout>
 </RelativeLayout>

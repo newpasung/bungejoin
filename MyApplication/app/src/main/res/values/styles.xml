@@ -27,4 +27,20 @@
     <style name="textdialog" parent="Base.Theme.AppCompat.Light.Dialog">
         <item name="android:windowNoTitle">true</item>
     </style>
+    <style name="inputdialog" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="commondialog" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="textview_userinfo_setting">
+        <item name="android:drawableLeft">@drawable/modify</item>
+        <item name="android:paddingLeft">@dimen/padding_normal</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">@dimen/textview_minheight</item>
+        <item name="android:layout_marginTop">@dimen/margin_big</item>
+    </style>
 </resources>

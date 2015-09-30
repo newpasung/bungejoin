@@ -6,11 +6,12 @@
     <meta-data android:name="AA_DB_VERSION" android:value="1" />
     <meta-data
         android:name="AA_MODELS"
-        android:value="com.season.bungejoin.bungejoin.Model.User" />
+        android:value="com.season.bungejoin.bungejoin.model.User" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <application
         android:name=".JoinApplication"
         android:allowBackup="true"
@@ -18,7 +19,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Activity.LeadActivity"
+            android:name=".activity.LeadActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,11 +28,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.LoginActivity"></activity>
-        <activity android:name=".Activity.WelcomeActivity"></activity>
-        <activity android:name=".Activity.HomePageActivity"></activity>
-        <activity android:name=".Activity.BaseActivity"></activity>
-        <activity android:name=".Activity.FillterGameActivity"></activity>
+        <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".activity.WelcomeActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.HomePageActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.BaseActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.FillterGameActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.FeedBackActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.MessageActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.SecurityActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.SystemSettingActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.UserinfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.BaseJavaActivity"
+            android:screenOrientation="portrait"></activity>
+
+
+
+        <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" >
+        </activity>
     </application>
 
 </manifest>

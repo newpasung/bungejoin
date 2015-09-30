@@ -2,21 +2,15 @@ package com.season.bungejoin.bungejoin.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.DashPathEffect;
 import android.graphics.EmbossMaskFilter;
-import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.PathDashPathEffect;
 import android.text.TextPaint;
-import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 
-import com.season.bungejoin.bungejoin.Model.User;
+import com.season.bungejoin.bungejoin.model.User;
 import com.season.bungejoin.bungejoin.R;
-import com.season.bungejoin.bungejoin.Utils.DensityUtils;
+import com.season.bungejoin.bungejoin.utils.DensityUtils;
 
 import java.util.Random;
 

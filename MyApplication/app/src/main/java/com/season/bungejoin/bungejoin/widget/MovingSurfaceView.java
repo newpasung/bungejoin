@@ -1,11 +1,11 @@
 package com.season.bungejoin.bungejoin.widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
@@ -16,10 +16,14 @@ import android.graphics.Shader;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.season.bungejoin.bungejoin.activity.MessageActivity;
+import com.season.bungejoin.bungejoin.activity.SecurityActivity;
+import com.season.bungejoin.bungejoin.activity.SystemSettingActivity;
+import com.season.bungejoin.bungejoin.activity.UserinfoActivity;
 import com.season.bungejoin.bungejoin.R;
 
 import java.util.ArrayList;
@@ -31,7 +35,7 @@ import java.util.TimerTask;
  * Created by Administrator on 2015/9/23.
  */
 public class MovingSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
-    final int CHOOSERCOUNT=4;
+    final int CHOOSERCOUNT = 4;
     Canvas mCanvas;
     SurfaceHolder mHolder;
     List<String> selections = new ArrayList<>();
@@ -44,8 +48,10 @@ public class MovingSurfaceView extends SurfaceView implements SurfaceHolder.Call
     int upbound;
     int displayW;
     int displayH;
-    int []color=new int[CHOOSERCOUNT];
-    Bitmap [] bitmaps=new Bitmap[CHOOSERCOUNT];
+    int[] color = new int[CHOOSERCOUNT];
+    Bitmap[] bitmaps = new Bitmap[CHOOSERCOUNT];
+    Class [] clses=new Class[CHOOSERCOUNT];
+
     public MovingSurfaceView(Context context) {
         super(context);
         init();
@@ -62,14 +68,18 @@ public class MovingSurfaceView extends SurfaceView implements SurfaceHolder.Call
     }
 
     protected void init() {
-        color[0]=getResources().getColor(R.color.gradient0);
-        color[1]=getResources().getColor(R.color.gradient1);
-        color[2]=getResources().getColor(R.color.gradient2);
-        color[3]=getResources().getColor(R.color.gradient3);
-        bitmaps[0]=BitmapFactory.decodeResource(getResources(), R.drawable.usersetting);
-        bitmaps[1]=BitmapFactory.decodeResource(getResources(), R.drawable.setting);
-        bitmaps[2]=BitmapFactory.decodeResource(getResources(),R.drawable.message);
-        bitmaps[3]=BitmapFactory.decodeResource(getResources(),R.drawable.security);
+        color[0] = getResources().getColor(R.color.gradient0);
+        color[1] = getResources().getColor(R.color.gradient1);
+        color[2] = getResources().getColor(R.color.gradient2);
+        color[3] = getResources().getColor(R.color.gradient3);
+        bitmaps[0] = BitmapFactory.decodeResource(getResources(), R.drawable.usersetting);
+        bitmaps[1] = BitmapFactory.decodeResource(getResources(), R.drawable.setting);
+        bitmaps[2] = BitmapFactory.decodeResource(getResources(), R.drawable.message);
+        bitmaps[3] = BitmapFactory.decodeResource(getResources(), R.drawable.security);
+        clses[0]= UserinfoActivity.class;
+        clses[1]= SystemSettingActivity.class;
+        clses[2]= MessageActivity.class;
+        clses[3]= SecurityActivity.class;
         mHolder = getHolder();
         mHolder.addCallback(this);
         setFocusable(true);
@@ -85,8 +95,32 @@ public class MovingSurfaceView extends SurfaceView implements SurfaceHolder.Call
     }
 
     @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            int counter = 0;
+            int index = -1;
+            float x = event.getX();
+            float y = event.getY();
+            for (int i = 0; i < pointList.size(); i++) {
+                Point point = pointList.get(i);
+                if (calDistance(point.x, x, point.y, y) <= radius) {
+                    counter++;
+                    index = i;
+                }
+            }
+            if (counter == 1) {
+                Intent intent=new Intent(getContext(),clses[index]);
+                getContext().startActivity(intent);
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return super.onTouchEvent(event);
+    }
+
+    @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        Log.i("surface","created");
         drawPic();
         mCanvas = mHolder.lockCanvas(new Rect(0, 0, 0, 0));
         mHolder.unlockCanvasAndPost(mCanvas);
@@ -103,12 +137,10 @@ public class MovingSurfaceView extends SurfaceView implements SurfaceHolder.Call
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        Log.i("surface","changed");
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        Log.i("surface","destroyed");
         destroy();
     }
 
@@ -125,15 +157,15 @@ public class MovingSurfaceView extends SurfaceView implements SurfaceHolder.Call
         Paint paint = new Paint();
         paint.setStrokeWidth(10);
         paint.setStyle(Paint.Style.STROKE);
-        for(int i =0;i<pointList.size();i++){
-            Point point=pointList.get(i);
-            ShapeDrawable drawable=new ShapeDrawable(new OvalShape());
-            drawable.getPaint().setShader(new BitmapShader(bitmaps[i], Shader.TileMode.CLAMP,Shader.TileMode.CLAMP));
+        for (int i = 0; i < pointList.size(); i++) {
+            Point point = pointList.get(i);
+            ShapeDrawable drawable = new ShapeDrawable(new OvalShape());
+            drawable.getPaint().setShader(new BitmapShader(bitmaps[i], Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
             drawable.setBounds(point.x - (int) radius, point.y - (int) radius
                     , point.x + (int) radius, point.y + (int) radius);
             drawable.draw(mCanvas);
             paint.setColor(color[i]);
-            mCanvas.drawCircle(point.x,point.y,radius,paint);
+            mCanvas.drawCircle(point.x, point.y, radius, paint);
         }
         mHolder.unlockCanvasAndPost(mCanvas);
     }
@@ -166,7 +198,7 @@ public class MovingSurfaceView extends SurfaceView implements SurfaceHolder.Call
         }
     }
 
-    public void destroy(){
+    public void destroy() {
         timer.cancel();
         timer.purge();
     }

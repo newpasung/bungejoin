@@ -22,11 +22,11 @@ public class BaseFragment extends Fragment {
         this.width = width;
     }
 
-    public int getHeight() {
+    public int getFHeight() {
         return height;
     }
 
-    public int getWidth() {
+    public int getFWidth() {
         return width;
     }
 }

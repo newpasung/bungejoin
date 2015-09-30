@@ -5,4 +5,9 @@ package com.season.bungejoin.bungejoin.Constant;
  */
 public class HttpParameter {
     public static String QINIUTOKEN="qiniutoken";
+    public static String NICKNAME="nickname";
+    public static String MOTTO="motto";
+    public static String EMAIL="email";
+    public static String PHONENUMBER="phonenumber";
+    public static String SEX="sex";
 }

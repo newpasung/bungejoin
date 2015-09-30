@@ -6,7 +6,7 @@ import android.text.TextUtils;
 
 import com.activeandroid.ActiveAndroid;
 import com.season.bungejoin.bungejoin.Constant.SharedPrefParameter;
-import com.season.bungejoin.bungejoin.Storage.SharedPreferManager;
+import com.season.bungejoin.bungejoin.storage.SharedPreferManager;
 
 /**
  * Created by Administrator on 2015/9/7.

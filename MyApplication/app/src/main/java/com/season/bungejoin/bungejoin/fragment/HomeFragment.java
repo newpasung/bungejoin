@@ -5,37 +5,28 @@ import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.ViewTreeObserver;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.season.bungejoin.bungejoin.JoinApplication;
-import com.season.bungejoin.bungejoin.Model.User;
+import com.season.bungejoin.bungejoin.model.User;
 import com.season.bungejoin.bungejoin.R;
-import com.season.bungejoin.bungejoin.Utils.DensityUtils;
-import com.season.bungejoin.bungejoin.Utils.HttpHelpers.ImageLoaderHelper;
+import com.season.bungejoin.bungejoin.utils.DensityUtils;
+import com.season.bungejoin.bungejoin.utils.HttpHelpers.ImageLoaderHelper;
 import com.season.bungejoin.bungejoin.widget.CircleImageView;
 import com.season.bungejoin.bungejoin.widget.MovingSurfaceView;
 import com.season.bungejoin.bungejoin.widget.SelfInfoView;
-import com.season.bungejoin.bungejoin.widget.TextDialog;
 
 import java.util.ArrayList;
 
@@ -50,7 +41,8 @@ public class HomeFragment extends BaseFragment {
     RelativeLayout rlshowboard;
     CircleImageView mIvavatar;
     MovingSurfaceView surfaceView;
-    LinearLayout mLlachieve;
+    RelativeLayout mRlachieve;
+    ImageView mIvgoldegg;
     User mUser;
     ViewStub viewStub;
     boolean isHide = false;
@@ -64,13 +56,18 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        surfaceView.destroy();
+        if(surfaceView!=null){
+            surfaceView.destroy();
+        }
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        surfaceView.destroy();
+        if(surfaceView!=null){
+            surfaceView.destroy();
+        }
     }
 
     @Nullable
@@ -90,7 +87,9 @@ public class HomeFragment extends BaseFragment {
     protected void iniUI(RelativeLayout relativeLayout) {
         mUser=User.getUser(JoinApplication.getInstance().getUid(getContext()));
         viewStub=(ViewStub)relativeLayout.findViewById(R.id.surfacestub);
-        mLlachieve=(LinearLayout)relativeLayout.findViewById(R.id.bottom_achieve);
+        mIvgoldegg=(ImageView)relativeLayout.findViewById(R.id.iv_goldegg);
+        mIvgoldegg.setImageLevel(8000);
+        mRlachieve=(RelativeLayout)relativeLayout.findViewById(R.id.bottom_achieve);
         rlboard = (RelativeLayout) relativeLayout.findViewById(R.id.rl_showboard);
         mIvavatar=(CircleImageView)relativeLayout.findViewById(R.id.circleview);
         ImageLoaderHelper.load(getContext(),mUser.cover,new SimpleImageLoadingListener(){
@@ -102,7 +101,7 @@ public class HomeFragment extends BaseFragment {
                 rlboard.setBackground(drawable);
             }
         });
-        ImageLoaderHelper.load(getContext(), mUser.avatar, mIvavatar, ImageLoaderHelper.testoption());
+        ImageLoaderHelper.load(getContext(), mUser.avatar, mIvavatar, ImageLoaderHelper.avataroption());
         rlboard.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -113,11 +112,10 @@ public class HomeFragment extends BaseFragment {
             }
         });
         rlshowboard=(RelativeLayout)rlboard.findViewById(R.id.rl_showboard);
+
         mBtnDirc = (ImageButton) relativeLayout.findViewById(R.id.btn_up);
         infoView = (SelfInfoView) relativeLayout.findViewById(R.id.infoview);
         Button btn_down = (Button) relativeLayout.findViewById(R.id.btn_down);
-        final TextDialog dialog = new TextDialog(getContext(), R.style.textdialog);
-        dialog.setCanceledOnTouchOutside(true);
         mBtnDirc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,8 +208,8 @@ public class HomeFragment extends BaseFragment {
                 points.add(new Point(300,378));
                 points.add(new Point(300, 500));
                 surfaceView.init(list, points);
-                surfaceView.setDisplayW(getWidth());
-                surfaceView.setDisplayH(getHeight() - mBtnDirc.getWidth() - ANIMATION_OFFSET-mLlachieve.getHeight());
+                surfaceView.setDisplayW(getFWidth());
+                surfaceView.setDisplayH(getFHeight() - 2*(mBtnDirc.getHeight() + ANIMATION_OFFSET)-mRlachieve.getHeight());
                 surfaceView.setUpbound(mBtnDirc.getHeight() + ANIMATION_OFFSET);
             }
             else{
@@ -223,7 +221,5 @@ public class HomeFragment extends BaseFragment {
             surfaceView.setVisibility(View.INVISIBLE);
         }
     }
-
-
 
 }

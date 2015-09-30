@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_gravity="center_horizontal"
     android:layout_height="match_parent">
+    <com.season.bungejoin.bungejoin.widget.CircleImageView
+        android:id="@+id/btn_weibo"
+        android:layout_margin="@dimen/margin_large"
+        android:src="@drawable/sinaweibo"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 </LinearLayout>
