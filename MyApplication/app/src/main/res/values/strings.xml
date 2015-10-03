@@ -20,12 +20,13 @@
     <string name="cancel">取消</string>
 
     <string name="spinner_basetype">请选择类型</string>
-    <string-array name="base_type">
-        <item>byte</item>
-        <item>short</item>
-        <item>int</item>
-        <item>long</item>
-        <item>float</item>
-        <item>double</item>
-    </string-array>
+
+    <string name="weibotype_sharepics">分享了几张图片</string>
+    <string name="weibotype_text">纯文字</string>
+    <string name="retweet_sharepics">转发了几张图片</string>
+    <string name="retweet_text">转发了一则文字</string>
+    <string name="welcome">WelCome To BungeJoin\n\n\n\n</string>
+
+    <string name="refresh">刷新</string>
+    <string name="loadmore">加载更多</string>
 </resources>

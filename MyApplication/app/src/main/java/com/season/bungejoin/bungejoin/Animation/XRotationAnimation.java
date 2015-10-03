@@ -1,4 +1,4 @@
-package com.season.bungejoin.bungejoin.Animation;
+package com.season.bungejoin.bungejoin.animation;
 
 import android.graphics.Camera;
 import android.graphics.Matrix;

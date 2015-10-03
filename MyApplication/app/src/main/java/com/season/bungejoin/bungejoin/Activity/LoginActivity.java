@@ -1,4 +1,4 @@
-package com.season.bungejoin.bungejoin.Activity;
+package com.season.bungejoin.bungejoin.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,13 +13,13 @@ import android.widget.RelativeLayout;
 import com.loopj.android.http.RequestParams;
 import com.season.bungejoin.bungejoin.Constant.SharedPrefParameter;
 import com.season.bungejoin.bungejoin.JoinApplication;
-import com.season.bungejoin.bungejoin.Model.User;
+import com.season.bungejoin.bungejoin.model.User;
 import com.season.bungejoin.bungejoin.R;
-import com.season.bungejoin.bungejoin.Storage.SharedPreferManager;
-import com.season.bungejoin.bungejoin.Utils.AnimationHelper;
-import com.season.bungejoin.bungejoin.Utils.DensityUtils;
-import com.season.bungejoin.bungejoin.Utils.HttpHelpers.HttpClient;
-import com.season.bungejoin.bungejoin.Utils.HttpHelpers.JsonResponseHandler;
+import com.season.bungejoin.bungejoin.storage.SharedPreferManager;
+import com.season.bungejoin.bungejoin.utils.AnimationHelper;
+import com.season.bungejoin.bungejoin.utils.DensityUtils;
+import com.season.bungejoin.bungejoin.utils.HttpHelpers.HttpClient;
+import com.season.bungejoin.bungejoin.utils.HttpHelpers.JsonResponseHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;

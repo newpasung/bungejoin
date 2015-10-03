@@ -1,4 +1,4 @@
-package com.season.bungejoin.bungejoin.Activity;
+package com.season.bungejoin.bungejoin.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

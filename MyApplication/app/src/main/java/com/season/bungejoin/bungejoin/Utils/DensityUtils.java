@@ -1,4 +1,4 @@
-package com.season.bungejoin.bungejoin.Utils;
+package com.season.bungejoin.bungejoin.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,8 +6,6 @@ import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-
-import com.season.bungejoin.bungejoin.JoinApplication;
 
 /**
  * Created by Administrator on 2015/9/7.

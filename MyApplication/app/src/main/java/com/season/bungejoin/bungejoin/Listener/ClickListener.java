@@ -1,4 +1,4 @@
-package com.season.bungejoin.bungejoin.Listener;
+package com.season.bungejoin.bungejoin.listener;
 
 import android.view.View;
 

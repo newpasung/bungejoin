@@ -12,6 +12,5 @@ public class SharedPrefParameter {
     public static final String AVATARURLS="avatarurls";
     public static final String AVATARCOUNT="avatarcount";
 
-    //微博信息
-//    public static final String ="";
+    public static final String SINAWEIBOCACHE="sinaweibocache";
 }

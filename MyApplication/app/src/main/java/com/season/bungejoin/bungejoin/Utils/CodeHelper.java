@@ -1,4 +1,4 @@
-package com.season.bungejoin.bungejoin.Utils;
+package com.season.bungejoin.bungejoin.utils;
 
 import android.util.Log;
 

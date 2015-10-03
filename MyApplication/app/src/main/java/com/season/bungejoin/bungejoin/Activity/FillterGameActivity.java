@@ -1,10 +1,7 @@
-package com.season.bungejoin.bungejoin.Activity;
+package com.season.bungejoin.bungejoin.activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;

@@ -1,9 +1,7 @@
-package com.season.bungejoin.bungejoin.Storage;
+package com.season.bungejoin.bungejoin.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import com.season.bungejoin.bungejoin.JoinApplication;
 
 /**
  * Created by Administrator on 2015/9/7.
@@ -11,6 +9,7 @@ import com.season.bungejoin.bungejoin.JoinApplication;
 public class SharedPreferManager {
     public String FILENAME_SYSTEMINFO="system_info";
     public String FILENAME_USERINFO="user_info";
+    public String FILENAME_SINAINFO="sinaweiboinfo";
     public static SharedPreferManager mSPManager=new SharedPreferManager();
     private SharedPreferences mSharedPref;
     private SharedPreferences.Editor mEditor;
@@ -32,6 +31,12 @@ public class SharedPreferManager {
 
     public SharedPreferManager setUserInfoManager(){
         mSharedPref =mContext.getSharedPreferences(FILENAME_USERINFO,Context.MODE_PRIVATE);
+        mEditor=mSharedPref.edit();
+        return mSPManager;
+    }
+
+    public SharedPreferManager setSinaInfoManager(){
+        mSharedPref =mContext.getSharedPreferences(FILENAME_SINAINFO,Context.MODE_PRIVATE);
         mEditor=mSharedPref.edit();
         return mSPManager;
     }
@@ -58,28 +63,33 @@ public class SharedPreferManager {
         return mSharedPref.getBoolean(key,false);
     }
 
-    public void setInt(String key,int value){
-        mEditor.putInt(key,value);
+    public SharedPreferManager setInt(String key,int value){
+        mEditor.putInt(key, value);
         mEditor.commit();
+        return this;
     }
 
-    public void setString(String key,String value){
+    public SharedPreferManager setString(String key,String value){
         mEditor.putString(key, value);
         mEditor.commit();
+        return this;
     }
 
-    public void setLong(String key ,long value){
+    public SharedPreferManager setLong(String key ,long value){
         mEditor.putLong(key,value);
         mEditor.commit();
+        return this;
     }
 
-    public void setFloat(String key,float value){
-        mEditor.putFloat(key,value);
+    public SharedPreferManager setFloat(String key,float value){
+        mEditor.putFloat(key, value);
         mEditor.commit();
+        return this;
     }
 
-    public void setBoolean(String key,boolean value){
+    public SharedPreferManager setBoolean(String key,boolean value){
         mEditor.putBoolean(key,value);
+        return this;
     }
 
 }

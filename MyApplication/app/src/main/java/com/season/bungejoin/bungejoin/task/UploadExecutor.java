@@ -1,4 +1,4 @@
-package com.season.bungejoin.bungejoin;
+package com.season.bungejoin.bungejoin.task;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -23,13 +23,13 @@ import java.io.IOException;
 /**
  * Created by Administrator on 2015/9/26.
  */
-public class UploadExcutor extends AsyncTask<String,Integer,Nullable> {
+public class UploadExecutor extends AsyncTask<String,Integer,Nullable> {
 
     Context  mContext;
     public static final int UPLOAD_CATAGORY_AVATAR=0;
     int catagory;
     int SCALE_STANDAR=200;
-    public UploadExcutor(Context context,int catagory) {
+    public UploadExecutor(Context context, int catagory) {
         super();
         mContext=context;
         this.catagory=catagory;

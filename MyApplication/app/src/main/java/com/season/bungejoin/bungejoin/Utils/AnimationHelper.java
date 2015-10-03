@@ -1,9 +1,8 @@
-package com.season.bungejoin.bungejoin.Utils;
+package com.season.bungejoin.bungejoin.utils;
 
-import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 
-import com.season.bungejoin.bungejoin.Animation.XRotationAnimation;
+import com.season.bungejoin.bungejoin.animation.XRotationAnimation;
 
 /**
  * Created by Administrator on 2015/9/8.

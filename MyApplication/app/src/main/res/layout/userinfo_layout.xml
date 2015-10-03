@@ -20,7 +20,7 @@
         android:layout_below="@+id/filler"
         android:background="@color/background0"
         android:layout_marginTop="@dimen/margin_big"
-        android:layout_height="@dimen/userinfo_avatarsize"
+        android:layout_height="@dimen/ssquare_size"
         android:layout_width="match_parent"
         />
 

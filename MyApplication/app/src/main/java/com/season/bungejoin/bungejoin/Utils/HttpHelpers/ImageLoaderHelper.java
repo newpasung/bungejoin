@@ -1,22 +1,18 @@
-package com.season.bungejoin.bungejoin.Utils.HttpHelpers;
+package com.season.bungejoin.bungejoin.utils.HttpHelpers;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.process.BitmapProcessor;
 import com.season.bungejoin.bungejoin.R;
-
-import java.util.concurrent.Executor;
 
 /**
  * Created by Administrator on 2015/9/23.
@@ -106,14 +102,31 @@ public class ImageLoaderHelper {
     public static DisplayImageOptions avataroption(){
         DisplayImageOptions options=new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.drawable.whitepic)
-                .showImageForEmptyUri(R.drawable.whitepic)
-                .showImageOnFail(R.drawable.whitepic)
+                .showImageForEmptyUri(R.drawable.blackpic)
+                .showImageOnFail(R.drawable.redpic)
                 .resetViewBeforeLoading(false)
                 .delayBeforeLoading(100)
                 .cacheInMemory(false)
                 .cacheOnDisk(true)
                 .considerExifParams(true)
                 .displayer(new FadeInBitmapDisplayer(100))
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
+                .build();
+        return options;
+    }
+
+    public static DisplayImageOptions fadeavataropt(){
+        DisplayImageOptions options=new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.whitepic)
+                .showImageForEmptyUri(R.drawable.blackpic)
+                .showImageOnFail(R.drawable.redpic)
+                .resetViewBeforeLoading(false)
+                .delayBeforeLoading(100)
+                .cacheInMemory(false)
+                .cacheOnDisk(true)
+                .considerExifParams(true)
+                .displayer(new FadeInBitmapDisplayer(2000))
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
                 .build();

@@ -1,12 +1,10 @@
-package com.season.bungejoin.bungejoin.Utils.HttpHelpers;
+package com.season.bungejoin.bungejoin.utils.HttpHelpers;
 
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.season.bungejoin.bungejoin.JoinApplication;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +48,12 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
                 onSuccess(response);
             }
             else{
-                onFailure();
+                if(response.getInt("errorcode")==10001){
+                    Toast.makeText(mContext,"token invalid",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    onFailure();
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();

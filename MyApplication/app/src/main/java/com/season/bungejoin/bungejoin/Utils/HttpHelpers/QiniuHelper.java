@@ -1,18 +1,14 @@
-package com.season.bungejoin.bungejoin.Utils.HttpHelpers;
+package com.season.bungejoin.bungejoin.utils.HttpHelpers;
 
 import android.content.Context;
 
 import com.loopj.android.http.RequestParams;
-import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
 import com.season.bungejoin.bungejoin.Constant.HttpParameter;
-import com.season.bungejoin.bungejoin.JoinApplication;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.File;
 
 /**
  * Created by Administrator on 2015/9/21.
@@ -31,7 +27,7 @@ public class QiniuHelper {
         }
         RequestParams params =new RequestParams();
         params.put("catagory",filetype);
-        HttpClient.post(mContext,"qiniu/token",params,new JsonResponseHandler(mContext){
+        HttpClient.syncPost(mContext,"qiniu/token",params,new JsonResponseHandler(mContext){
             @Override
             public void onSuccess(JSONObject object) {
                 super.onSuccess(object);

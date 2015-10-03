@@ -53,4 +53,10 @@
     <color name="gray">#ADADAD</color>
 
     <color name="background0">#eee8ab</color>
+    
+    <color name="weibocard0">#00b32d</color>
+    <color name="weibocard1">#59b370</color>
+    <color name="weibocard2">#71e38e</color>
+    <color name="weibocard3">#e3c171</color>
+    <color name="weibocard4">#d471e3</color>
 </resources>

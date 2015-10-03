@@ -1,9 +1,9 @@
-package com.season.bungejoin.bungejoin.Activity;
+package com.season.bungejoin.bungejoin.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.season.bungejoin.bungejoin.Constant.SharedPrefParameter;
-import com.season.bungejoin.bungejoin.Storage.SharedPreferManager;
+import com.season.bungejoin.bungejoin.storage.SharedPreferManager;
 
 public class LeadActivity extends BaseActivity{
 

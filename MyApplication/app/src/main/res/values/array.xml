@@ -5,4 +5,21 @@
         <item >主页</item>
         <item>爱好</item>
     </string-array>
+
+    <array name="weibocardcolor">
+        <item>@color/weibocard0</item>
+        <item>@color/weibocard1</item>
+        <item>@color/weibocard2</item>
+        <item>@color/weibocard3</item>
+        <item>@color/weibocard4</item>
+    </array>
+
+    <string-array name="base_type">
+        <item>byte</item>
+        <item>short</item>
+        <item>int</item>
+        <item>long</item>
+        <item>float</item>
+        <item>double</item>
+    </string-array>
 </resources>

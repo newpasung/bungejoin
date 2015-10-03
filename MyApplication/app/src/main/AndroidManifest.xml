@@ -51,8 +51,10 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.BaseJavaActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.SinaWeiboActivity"
+            android:screenOrientation="portrait">
 
-
+        </activity>
 
         <activity
             android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"

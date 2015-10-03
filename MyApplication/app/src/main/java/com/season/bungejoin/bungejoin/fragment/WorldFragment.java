@@ -19,14 +19,19 @@ import android.widget.Toast;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.season.bungejoin.bungejoin.R;
+import com.season.bungejoin.bungejoin.activity.SinaWeiboActivity;
 import com.season.bungejoin.bungejoin.sina.AuthListener;
 import com.season.bungejoin.bungejoin.sina.SinaHelper;
+import com.season.bungejoin.bungejoin.sina.SinaHttpClient;
 import com.season.bungejoin.bungejoin.sina.SinaParams;
+import com.season.bungejoin.bungejoin.sina.SinaResHandler;
+import com.season.bungejoin.bungejoin.utils.HttpHelpers.JsonResponseHandler;
 import com.season.bungejoin.bungejoin.utils.HttpHelpers.QiniuHelper;
 import com.season.bungejoin.bungejoin.widget.CircleImageView;
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
+import com.sina.weibo.sdk.exception.WeiboException;
 
 import org.json.JSONObject;
 
@@ -92,15 +97,26 @@ public class WorldFragment extends BaseFragment {
     }
 
     protected void loginWeibo(){
-        mWeiboAuth=new AuthInfo(getActivity(), SinaParams.APP_KEY,SinaParams.CALLBACK_RUL,SinaParams.SCOPE);
-        mWeiboSso=new SsoHandler(getActivity(),mWeiboAuth);
-        mWeiboSso.authorize(new AuthListener(){
-            @Override
-            public void onComplete(Oauth2AccessToken tokendata) {
-                super.onComplete(tokendata);
-                SinaHelper.saveTokenData(tokendata, getContext());
-            }
-        });
+        if(SinaHelper.getToken(getContext()).equals("")){
+            mWeiboAuth=new AuthInfo(getActivity(), SinaParams.APP_KEY,SinaParams.CALLBACK_RUL,SinaParams.SCOPE);
+            mWeiboSso=new SsoHandler(getActivity(),mWeiboAuth);
+            mWeiboSso.authorize(new AuthListener(){
+                @Override
+                public void onComplete(Oauth2AccessToken tokendata) {
+                    super.onComplete(tokendata);
+                    SinaHelper.saveTokenData(tokendata, getContext());
+                }
+
+                @Override
+                public void onWeiboException(WeiboException e) {
+                    super.onWeiboException(e);
+                }
+            });
+        }else{
+            Intent intent =new Intent (getActivity(), SinaWeiboActivity.class);
+            startActivity(intent);
+        }
+
     }
 
 }

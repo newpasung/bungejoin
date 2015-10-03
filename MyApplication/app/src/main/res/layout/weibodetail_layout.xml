@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/background0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.season.bungejoin.bungejoin.widget.CircleImageView
+            android:id="@+id/cir_avatar"
+            android:layout_width="@dimen/icon_size_big"
+            android:layout_height="@dimen/icon_size_big"
+            android:layout_margin="@dimen/margin_normal"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/cir_avatar"
+            android:layout_toRightOf="@+id/cir_avatar"
+            android:padding="@dimen/padding_small"
+            android:text="BungeJoin"
+            android:textSize="@dimen/textsize_normal"
+            android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_msg"
+        android:layout_alignLeft="@+id/tv_name"
+        tools:text="dianzan pinglun dengdeng"
+        android:layout_below="@+id/tv_name"
+        android:padding="@dimen/padding_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cir_avatar">
+
+            <ScrollView
+                android:id="@+id/sl_textcontainer"
+                android:layout_alignParentTop="true"
+                android:scrollbars="vertical"
+                android:layout_above="@+id/ll_prepiccontainer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:text="@string/welcome"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_big" />
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/ll_prepiccontainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="bottom"
+                >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rec_pics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_showboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1.0">
+
+            <include
+                android:layout_weight="0.4"
+                layout="@layout/weibodetail_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        <RelativeLayout
+            android:layout_weight="0.6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/headerview"
+                    android:text="@string/refresh"
+                    android:layout_alignParentLeft="true"
+                    android:background="@color/transparent"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rec_bottomsum"
+                    android:layout_toLeftOf="@+id/footerview"
+                    android:layout_toRightOf="@+id/headerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/footerview"
+                android:text="@string/loadmore"
+                android:background="@color/transparent"
+                android:layout_alignParentRight="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_controller"
+        android:layout_width="@dimen/controller_size"
+        android:layout_height="@dimen/controller_size"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/margin_normal"
+        android:background="@drawable/controller" />
+</RelativeLayout>

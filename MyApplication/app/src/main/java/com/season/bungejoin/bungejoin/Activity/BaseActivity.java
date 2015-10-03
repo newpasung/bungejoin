@@ -1,10 +1,10 @@
-package com.season.bungejoin.bungejoin.Activity;
+package com.season.bungejoin.bungejoin.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
-import com.season.bungejoin.bungejoin.Utils.CodeHelper;
+import com.season.bungejoin.bungejoin.utils.CodeHelper;
 
 /**
  * Created by Administrator on 2015/9/7.

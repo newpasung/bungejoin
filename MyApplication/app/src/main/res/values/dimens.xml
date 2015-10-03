@@ -13,7 +13,7 @@
     <dimen name="margin_small">5dp</dimen>
     <dimen name="margin_big">28dp</dimen>
 
-    <dimen name="radian_normal">4dp</dimen>
+    <dimen name="radian_normal">7dp</dimen>
 
     <dimen name="textsize_normal">14sp</dimen>
     <dimen name="textsize_big">20sp</dimen>
@@ -26,9 +26,12 @@
 
     <dimen name="leader_height">80dp</dimen>
     <dimen name="cover_image_radius">120dp</dimen>
-    <dimen name="userinfo_avatarsize">100dp</dimen>
+    <dimen name="ssquare_size">100dp</dimen>
     <dimen name="dialog_width">260dp</dimen>
 
     <dimen name="textview_minheight">40dp</dimen>
     <dimen name="controller_size">60dp</dimen>
+
+    <dimen name="icon_size_normal">60dp</dimen>
+    <dimen name="icon_size_big">80dp</dimen>
 </resources>

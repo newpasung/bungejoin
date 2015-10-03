@@ -1,9 +1,12 @@
-package com.season.bungejoin.bungejoin.Model;
+package com.season.bungejoin.bungejoin.model;
+
+import android.content.Context;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
+import com.season.bungejoin.bungejoin.JoinApplication;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,6 +88,12 @@ public class User extends Model {
 
     public static User getUser(int id){
         return new Select().from(User.class).where("userid="+id).executeSingle();
+    }
+
+    public static void  modify_avatar(Context context,String url){
+        User user=getUser(JoinApplication.getInstance().getUid(context));
+        user.avatar=url;
+        user.save();
     }
 
 }
