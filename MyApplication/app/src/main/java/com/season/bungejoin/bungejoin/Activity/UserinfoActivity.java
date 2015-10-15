@@ -25,7 +25,8 @@ import com.season.bungejoin.bungejoin.Constant.MRequestCode;
 import com.season.bungejoin.bungejoin.Constant.SharedPrefParameter;
 import com.season.bungejoin.bungejoin.JoinApplication;
 import com.season.bungejoin.bungejoin.R;
-import com.season.bungejoin.bungejoin.task.UploadExecutor;
+import com.season.bungejoin.bungejoin.libs.me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+import com.season.bungejoin.bungejoin.task.PicUploadExecutor;
 import com.season.bungejoin.bungejoin.model.User;
 import com.season.bungejoin.bungejoin.storage.SharedPreferManager;
 import com.season.bungejoin.bungejoin.utils.HttpHelpers.HttpClient;
@@ -33,6 +34,7 @@ import com.season.bungejoin.bungejoin.utils.HttpHelpers.ImageLoaderHelper;
 import com.season.bungejoin.bungejoin.utils.HttpHelpers.JsonResponseHandler;
 import com.season.bungejoin.bungejoin.widget.ChoiceDialog;
 import com.season.bungejoin.bungejoin.widget.InputDialog;
+import com.season.bungejoin.bungejoin.widget.TextDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,7 +42,8 @@ import org.json.JSONObject;
 /**
  * Created by Administrator on 2015/9/24.
  */
-public class UserinfoActivity  extends BaseActivity{
+public class UserinfoActivity  extends SwipeBackActivity {
+    int UPLOAD_CATAGORY;
     RecyclerView mRecavatar;
     TextView mTvnickname;
     TextView mTvemail;
@@ -51,6 +54,7 @@ public class UserinfoActivity  extends BaseActivity{
     View mFiller;
     User mUser;
     InputDialog mInputDialog;
+    TextDialog waitdialog;
     boolean isUIUp=true;
     String [] avatarUrls={"http://7xlra1.com1.z0.glb.clouddn.com/image/avataradd_avatar.png"
           };
@@ -77,7 +81,7 @@ public class UserinfoActivity  extends BaseActivity{
             cursor.moveToFirst();
             String path=cursor.getString(cursor.getColumnIndex(column[0]));
             cursor.close();
-            UploadExecutor taskExcutor=new UploadExecutor(this, UploadExecutor.UPLOAD_CATAGORY_AVATAR);
+            PicUploadExecutor taskExcutor=new PicUploadExecutor(this, UPLOAD_CATAGORY);
             taskExcutor.execute(path);
         }
     }
@@ -196,19 +200,34 @@ public class UserinfoActivity  extends BaseActivity{
         listener =new OnItemClickedListener() {
             @Override
             public void onItemClick(View v,int pos) {
-                new ChoiceDialog(UserinfoActivity.this)
-                        .addItem("da",new ChoiceDialog.OnClickListener(){
-                            @Override
-                            public void didClick(ChoiceDialog dialog, String itemTitle) {
-
-                            }
-                        })
-                        .addTitle("asdfa    ")
-                        .show();
-                /*if(pos==0){
-                    Intent intent =new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, MRequestCode.GETAPICTURE);
-                }*/
+                if(pos==0){
+                    new ChoiceDialog(UserinfoActivity.this)
+                            .addItem("修改头像",new ChoiceDialog.OnClickListener(){
+                                @Override
+                                public void didClick(ChoiceDialog dialog, String itemTitle) {
+                                    Intent intent =new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                    startActivity(intent);
+                                    UPLOAD_CATAGORY = PicUploadExecutor.UPLOAD_CATAGORY_AVATAR;
+                                    dialog.dismiss();
+                                }
+                            })
+                            .addItem("修改封面", new ChoiceDialog.OnClickListener() {
+                                @Override
+                                public void didClick(ChoiceDialog dialog, String itemTitle) {
+                                    Intent intent =new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                    startActivity(intent);
+                                    UPLOAD_CATAGORY = PicUploadExecutor.UPLOAD_CATAGORY_COVER;
+                                    dialog.dismiss();
+                                }
+                            })
+                            .show();
+                }
+                else{
+                    Intent intent =new Intent(UserinfoActivity.this,ImageBrowserActivity.class);
+                    intent.putExtra(ImageBrowserActivity.INTENT_PARAMETER_PICURL,avatarUrls[pos]);
+                    intent.putExtra(ImageBrowserActivity.INTENT_PARAMETER_PICCOUNT,1);
+                    startActivity(intent);
+                }
             }
         };
 
@@ -222,6 +241,9 @@ public class UserinfoActivity  extends BaseActivity{
                             public void onClick(DialogInterface dialog, int which) {
                                 uploadInfo();
                                 dialog.dismiss();
+                                waitdialog =new TextDialog(UserinfoActivity.this);
+                                waitdialog.show();
+
                             }
                         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
@@ -350,6 +372,9 @@ public class UserinfoActivity  extends BaseActivity{
                 try {
                     JSONObject data =object.getJSONObject("data");
                     User.insertOrUpdate(data);
+                    if(waitdialog!=null){
+                        waitdialog.dismiss();
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

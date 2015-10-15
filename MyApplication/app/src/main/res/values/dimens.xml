@@ -32,6 +32,7 @@
     <dimen name="textview_minheight">40dp</dimen>
     <dimen name="controller_size">60dp</dimen>
 
+    <dimen name="icon_size_small">40dp</dimen>
     <dimen name="icon_size_normal">60dp</dimen>
     <dimen name="icon_size_big">80dp</dimen>
 </resources>

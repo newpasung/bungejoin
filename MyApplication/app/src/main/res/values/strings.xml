@@ -18,6 +18,7 @@
     <string name="picture">图片</string>
     <string name="ensure">确定</string>
     <string name="cancel">取消</string>
+    <string name="_else">其他</string>
 
     <string name="spinner_basetype">请选择类型</string>
 

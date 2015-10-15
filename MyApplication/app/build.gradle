@@ -33,4 +33,8 @@ dependencies {
     compile files('src/main/java/com/season/bungejoin/bungejoin/libs/happy-dns-0.2.3.2.jar')
     compile files('src/main/java/com/season/bungejoin/bungejoin/libs/universal-image-loader-1.9.4.jar')
     compile files('src/main/java/com/season/bungejoin/bungejoin/libs/weiboSDKCore_3.1.2.jar')
+    compile files('src/main/java/com/season/bungejoin/bungejoin/libs/core_3.2.0.jar')
+    compile files('src/main/java/com/season/bungejoin/bungejoin/libs/javase.jar')
+    compile 'de.greenrobot:eventbus:2.4.0'
+    compile files('libs/JBox2d4Android_2.1.2.jar')
 }

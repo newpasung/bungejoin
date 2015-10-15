@@ -21,6 +21,7 @@ import java.util.Collections;
 public class PreviewAdapter extends RecyclerView.Adapter {
     ArrayList<String> urlList=new ArrayList<>();
     Context mContext;
+    OnItemClickedListener listener ;
     public PreviewAdapter(Context context) {
         mContext=context;
     }
@@ -37,9 +38,15 @@ public class PreviewAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
             ImageLoaderHelper.load(mContext, urlList.get(position), ((MyHolder) holder).mImageview,
                     ImageLoaderHelper.avataroption());
+        ((MyHolder)holder).mImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClicked(position);
+            }
+        });
     }
 
     class MyHolder extends RecyclerView.ViewHolder{
@@ -64,4 +71,15 @@ public class PreviewAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public String getData(int position){
+        return urlList.get(position);
+    }
+
+    public interface OnItemClickedListener{
+        void onItemClicked(int pos);
+    }
+
+    public void setListener(OnItemClickedListener listener) {
+        this.listener = listener;
+    }
 }

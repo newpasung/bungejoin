@@ -2,6 +2,8 @@ package com.season.bungejoin.bungejoin.widget;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +23,7 @@ public class ChoiceDialog extends Dialog {
     private ActionListAdapter adapter;
     private TextView titleView;
     private String title;
-
+    private TextView textView;
     public ChoiceDialog(Context context) {
         super(context, R.style.commondialog);
         adapter = new ActionListAdapter(context,R.layout.textview);
@@ -33,6 +35,8 @@ public class ChoiceDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choicedialog_layout);
         listView = (ListView)findViewById(R.id.listView);
+        listView.setDividerHeight(2);
+        listView.setDivider(new ColorDrawable(Color.BLACK));
         listView.setAdapter(adapter);
 
         titleView = (TextView)findViewById(R.id.title_view);
@@ -80,12 +84,11 @@ public class ChoiceDialog extends Dialog {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             if(convertView==null){
-                convertView=inflater.inflate(R.layout.textview,null);
+                convertView=inflater.inflate(R.layout.choicedialog_item_layout,null);
             }
-            TextView textView=(TextView)convertView;
+            textView=(TextView)convertView.findViewById(R.id.tv_text);
             ActionItem item = getItem(position);
             textView.setText(item.title);
-            textView.setTextSize(15);
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

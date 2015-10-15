@@ -2,6 +2,7 @@ package com.season.bungejoin.bungejoin;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
 import com.activeandroid.ActiveAndroid;
@@ -64,6 +65,14 @@ public class JoinApplication extends Application {
             uid = SharedPreferManager.getInstance(context).setUserInfoManager().getInt(SharedPrefParameter.CURUID);
         }
         return uid;
+    }
+
+    public boolean getExWritePermission(Context context){
+        PackageManager manager=context.getPackageManager();
+        boolean permission =(PackageManager.PERMISSION_GRANTED==manager
+                .checkPermission("android.permission.WRITE_EXTERNAL_STORAGE",
+                        "com.season.bungejoin.bungejoin"));
+        return permission;
     }
 
 }

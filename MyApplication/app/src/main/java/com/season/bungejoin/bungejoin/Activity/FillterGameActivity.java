@@ -1,23 +1,26 @@
 package com.season.bungejoin.bungejoin.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.season.bungejoin.bungejoin.Constant.MRequestCode;
 import com.season.bungejoin.bungejoin.R;
-import com.season.bungejoin.bungejoin.widget.FillterView;
+import com.season.bungejoin.bungejoin.libs.com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+import com.season.bungejoin.bungejoin.libs.me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+import com.season.bungejoin.bungejoin.widget.FillerView;
 
 /**
  * Created by Administrator on 2015/9/11.
  */
-public class FillterGameActivity extends BaseActivity {
-    FillterView fillterView;
-    boolean isNeededInit = true;
+public class FillterGameActivity extends SwipeBackActivity {
+    FillerView fillerView;
     ProgressDialog dialog;
-    Button[] mBtnChooser = new Button[6];
+    Button[] mBtnChooser = new Button[7];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,21 +29,21 @@ public class FillterGameActivity extends BaseActivity {
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==MRequestCode.RESULTCODE_COLOR&&requestCode==MRequestCode.GETCOLOR){
+            int color =data.getIntExtra("data",-1);
+            if(color!=-1){
+                fillerView.setPaintColor(color);
+            }
+        }
     }
 
     protected void iniUI() {
         dialog = new ProgressDialog(this);
-        fillterView = (FillterView) findViewById(R.id.fillterview);
+        fillerView = (FillerView) findViewById(R.id.fillerview);
         int btn_id[] = {R.id.btn_colorchooser1, R.id.btn_colorchooser2,
                 R.id.btn_colorchooser3, R.id.btn_colorchooser4, R.id.btn_colorchooser5,
-                R.id.btn_colorchooser6};
+                R.id.btn_colorchooser6,R.id.btn_colorchooser7};
         final int color_id[] = {R.color.summerparty1, R.color.summerparty2, R.color.summerparty3,
                 R.color.summerparty4, R.color.summerparty5};
         final int length = btn_id.length;
@@ -51,46 +54,18 @@ public class FillterGameActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     toast("choosed");
-                    if (j != length - 1)
-                        fillterView.setPaintColor(FillterGameActivity.this.getResources().getColor(color_id[j]));
-                    else
-                        fillterView.setIsRandom(true);
+                    if(j<length-2){
+                        fillerView.setPaintColor(FillterGameActivity.this.getResources().getColor(color_id[j]));
+                    }
+                    else if(j == length-2){
+                        fillerView.setRandomColor();
+                    }
+                    else{
+                        startActivityForResult(new Intent(FillterGameActivity.this,SelectColorActivity.class), MRequestCode.GETCOLOR);
+                    }
                 }
             });
         }
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            int posX = (int) event.getX();
-            int posY = (int) event.getY();
-            Log.i("COORDINATE_ACTIVITY", "X->" + posX + "Y->" + posY);
-        }
-        return super.onTouchEvent(event);
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (isNeededInit) {
-            FillterView.Job job = new FillterView.Job() {
-                @Override
-                public void onWorking() {
-                    dialog.show();
-                    fillterView.setFocusable(false);
-                }
-
-                @Override
-                public void postworking() {
-                    dialog.dismiss();
-                    fillterView.setFocusable(true);
-                }
-            };
-            fillterView.setListener(job);
-            fillterView.preProc();
-            fillterView.setFocusable(true);
-            isNeededInit = false;
-        }
-    }
 }

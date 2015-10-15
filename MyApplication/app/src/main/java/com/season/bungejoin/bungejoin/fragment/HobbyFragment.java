@@ -1,6 +1,7 @@
 package com.season.bungejoin.bungejoin.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +14,10 @@ import android.widget.Toast;
 
 import com.season.bungejoin.bungejoin.activity.BaseJavaActivity;
 import com.season.bungejoin.bungejoin.activity.FillterGameActivity;
+import com.season.bungejoin.bungejoin.activity.JBoxActivity;
+import com.season.bungejoin.bungejoin.activity.SelectColorActivity;
 import com.season.bungejoin.bungejoin.adapter.HobbyLeaderAdapter;
+import com.season.bungejoin.bungejoin.libs.me.imid.swipebacklayout.lib.app.SwipeBackPreferenceActivity;
 import com.season.bungejoin.bungejoin.listener.ClickListener;
 import com.season.bungejoin.bungejoin.R;
 
@@ -124,7 +128,7 @@ public class HobbyFragment extends BaseFragment {
                 {},
                 {},
                 {},
-                {BaseJavaActivity.class}
+                {BaseJavaActivity.class, JBoxActivity.class}
         };
         return cls;
     }
@@ -135,7 +139,7 @@ public class HobbyFragment extends BaseFragment {
                 , {",d.tuo", "aseyras", "23gys", "asdqwghsd", "asdascx"}
                 , {"xxcgsjj", "aseyras", "789787", "aseyras"}
                 , {"werw", "aseyras", "646546", "aseyras", "aseyras"}
-                , {"java基础", "hoyue", "aseyras", "aseyras", "aseyras"}};
+                , {"java基础", "JBOX测试", "aseyras", "aseyras", "aseyras"}};
         return text;
     }
 }

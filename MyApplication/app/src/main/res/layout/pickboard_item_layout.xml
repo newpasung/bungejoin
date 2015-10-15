@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/padding_normal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.season.bungejoin.bungejoin.widget.CircleImageView
+        android:id="@+id/cir_color"
+        android:layout_width="@dimen/icon_size_normal"
+        android:layout_height="@dimen/icon_size_normal" />
+
+</LinearLayout>

@@ -199,4 +199,8 @@ public class SinaUser extends Model {
         return new Select().from(SinaUser.class).where("sinauserid="+id).executeSingle();
     }
 
+    public String getHdAvatar(){
+        return this.avatar_hd;
+    }
+
 }

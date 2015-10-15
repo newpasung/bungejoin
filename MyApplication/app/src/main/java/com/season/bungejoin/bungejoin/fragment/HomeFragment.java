@@ -1,5 +1,6 @@
 package com.season.bungejoin.bungejoin.fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,6 +21,7 @@ import android.widget.RelativeLayout;
 
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.season.bungejoin.bungejoin.JoinApplication;
+import com.season.bungejoin.bungejoin.activity.ImageBrowserActivity;
 import com.season.bungejoin.bungejoin.model.User;
 import com.season.bungejoin.bungejoin.R;
 import com.season.bungejoin.bungejoin.utils.DensityUtils;
@@ -56,6 +58,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
+        showBoard();
         if(surfaceView!=null){
             surfaceView.destroy();
         }
@@ -92,6 +95,16 @@ public class HomeFragment extends BaseFragment {
         mRlachieve=(RelativeLayout)relativeLayout.findViewById(R.id.bottom_achieve);
         rlboard = (RelativeLayout) relativeLayout.findViewById(R.id.rl_showboard);
         mIvavatar=(CircleImageView)relativeLayout.findViewById(R.id.circleview);
+        mIvavatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getActivity(), ImageBrowserActivity.class);
+                intent.putExtra(ImageBrowserActivity.INTENT_PARAMETER_PICCOUNT,1);
+                intent.putExtra(ImageBrowserActivity.INTENT_PARAMETER_PICURL,mUser.avatar);
+                startActivity(intent);
+            }
+        });
+
         ImageLoaderHelper.load(getContext(),mUser.cover,new SimpleImageLoadingListener(){
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
@@ -119,53 +132,14 @@ public class HomeFragment extends BaseFragment {
         mBtnDirc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isHide){
-                    rlboard.startAnimation(getHideAnim(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            setSurVisibility(true);
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    }));
-                    mBtnDirc.setImageResource(R.drawable.downtip);
-                    isHide = true;
-                }
+                hideBoard();
             }
         });
 
         btn_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isHide) {
-                    rlboard.startAnimation(getShowAnimation(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-                            setSurVisibility(false);
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    }));
-                    mBtnDirc.setImageResource(R.drawable.uptip);
-                    isHide = false;
-
-                }
+                showBoard();
             }
         });
 
@@ -219,6 +193,52 @@ public class HomeFragment extends BaseFragment {
         else{
             surfaceView.destroy();
             surfaceView.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    protected void showBoard(){
+        if (isHide) {
+            rlboard.startAnimation(getShowAnimation(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                    setSurVisibility(false);
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            }));
+            mBtnDirc.setImageResource(R.drawable.uptip);
+            isHide = false;
+        }
+    }
+
+    protected void hideBoard(){
+        if(!isHide){
+            rlboard.startAnimation(getHideAnim(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    setSurVisibility(true);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            }));
+            mBtnDirc.setImageResource(R.drawable.downtip);
+            isHide = true;
         }
     }
 

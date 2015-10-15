@@ -47,6 +47,9 @@ public class FillterView extends ImageView {
         int width = getMeasuredWidth();
         setMeasuredDimension(width, getDrawable().getIntrinsicHeight() * width / getDrawable()
                 .getIntrinsicWidth());
+        BitmapDrawable drawable = (BitmapDrawable) getDrawable();
+        Bitmap bm = drawable.getBitmap();
+        mBitmap = Bitmap.createScaledBitmap(bm, getMeasuredWidth(), getMeasuredHeight(), false);
     }
 
     @Override
@@ -95,8 +98,8 @@ public class FillterView extends ImageView {
             }
 
         }
-        mStack.push(new Point(x, y));
-        while (!mStack.isEmpty()) {
+//        mStack.push(new Point(x, y));
+        /*while (!mStack.isEmpty()) {
             Point point = mStack.pop();
             int upIndex = lineUpFilling(point.x, point.y) - 1;
             int downIndex = lineDownFilling(point.x, point.y) - 1;
@@ -113,7 +116,7 @@ public class FillterView extends ImageView {
                     findSeedVer(upIndex, downIndex, point.x - 1, false);
                 }
             }
-        }
+        }*/
         mBitmap.setPixels(iniPixels, 0, mBitmap.getWidth(), 0, 0, mBitmap.getWidth(), mBitmap.getHeight());
         setImageDrawable(new BitmapDrawable(getResources(), mBitmap));
     }

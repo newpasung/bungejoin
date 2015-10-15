@@ -343,4 +343,12 @@ public class SinaWeibo extends Model {
         return urls;
     }
 
+    public static String getLargePic(String url){
+        String result =url;
+        if(url.contains("thumbnail")){
+            result=url.replace("thumbnail","large");
+        }
+        return result;
+    }
+
 }

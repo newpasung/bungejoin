@@ -3,7 +3,6 @@ package com.season.bungejoin.bungejoin.sina;
 import android.content.Context;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.season.bungejoin.bungejoin.utils.HttpHelpers.JsonResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONArray;

@@ -17,12 +17,14 @@ public class QiniuHelper {
 
     public static final int FILETYPE_DEFAULT=0;
     public static final int FILETYPE_AVATAR=1;
+    public static final int FILETYPE_COVER =2;
 
     public static void uploadFile(Context mContext,int filetype,final byte[] file, final String filename,final UpCompletionHandler handler){
         final UploadManager manager=new UploadManager();
         final String name ;
         switch (filetype){
             case FILETYPE_AVATAR :{name="image/avatar"+filename;}break;
+            case FILETYPE_COVER:{name="image/cover"+filename;}break;
             default:{name=filename;}
         }
         RequestParams params =new RequestParams();

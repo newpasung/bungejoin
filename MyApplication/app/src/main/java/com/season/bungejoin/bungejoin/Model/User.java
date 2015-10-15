@@ -96,4 +96,10 @@ public class User extends Model {
         user.save();
     }
 
+    public static void  modify_cover(Context context,String url){
+        User user=getUser(JoinApplication.getInstance().getUid(context));
+        user.cover=url;
+        user.save();
+    }
+
 }

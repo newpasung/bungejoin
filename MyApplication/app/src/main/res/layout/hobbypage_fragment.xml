@@ -38,7 +38,7 @@
             android:layout_height="@dimen/leader_height" />
         <TextView
             style="@style/text_leftsideleader"
-            android:text="@string/game"
+            android:text="@string/_else"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/leader_height" />

@@ -6,4 +6,42 @@
         <attr name="civ_border_overlay" format="boolean" />
         <attr name="civ_fill_color" format="color" />
     </declare-styleable>
+    <declare-styleable name="SubsamplingScaleImageView">
+        <attr name="src" format="reference"/>
+        <attr name="assetName" format="string"/>
+        <attr name="panEnabled" format="boolean"/>
+        <attr name="zoomEnabled" format="boolean"/>
+        <attr name="quickScaleEnabled" format="boolean"/>
+        <attr name="tileBackgroundColor" format="color"/>
+    </declare-styleable>
+
+        <declare-styleable name="GifView">
+            <attr name="gif" format="reference" />
+            <attr name="paused" format="boolean" />
+        </declare-styleable>
+        <declare-styleable name="CustomTheme">
+            <attr name="gifViewStyle" format="reference" />
+        </declare-styleable>
+
+    <declare-styleable name="SwipeBackLayout">
+        <attr name="edge_size" format="dimension"/>
+        <attr name="edge_flag">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+            <enum name="bottom" value="2" />
+            <enum name="all" value="3" />
+        </attr>
+        <attr name="shadow_left" format="reference"/>
+        <attr name="shadow_right" format="reference"/>
+        <attr name="shadow_bottom" format="reference"/>
+    </declare-styleable>
+
+
+    <attr name="SwipeBackLayoutStyle" format="reference"/>
+
+    <declare-styleable name="fillerview">
+        <attr name="viewsrc" format="reference"></attr>
+        <attr name="border_color" format="color|reference"></attr>
+    </declare-styleable>
+
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources >
     <string-array name="home_part">
         <item>世界</item>
         <item >主页</item>
@@ -22,4 +22,47 @@
         <item>float</item>
         <item>double</item>
     </string-array>
+
+    <array name="pickboard">
+        <item>#FFF68F</item>
+        <item>#FFEFD5</item>
+        <item>#FFE4E1</item>
+        <item>#FFDEAD</item>
+
+        <item>#FFB6C1</item>
+        <item>#FFAEB9</item>
+        <item>#FFA54F</item>
+        <item>#FFA500</item>
+
+        <item>#FF7F50</item>
+        <item>#FF7F24</item>
+        <item>#FF6347</item>
+        <item>#FF6A6A</item>
+
+        <item>#FF4500</item>
+        <item>#FF4040</item>
+        <item>#FF3E96</item>
+        <item>#FF34B3</item>
+
+        <item>#FF1493</item>
+        <item>#EE1289</item>
+        <item>#DC143C</item>
+        <item>#EE0000</item>
+
+        <item>#DBDBDB</item>
+        <item>#D3D3D3</item>
+        <item>#CDCDB4</item>
+        <item>#CDC673</item>
+
+        <item>#CDB5CD</item>
+        <item>#CD9B9B</item>
+        <item>#CD950C</item>
+        <item>#CD6600</item>
+
+        <item>#C67171</item>
+        <item>#BA55D3</item>
+        <item>#B3EE3A</item>
+        <item>#9BCD9B</item>
+    </array>
+
 </resources>

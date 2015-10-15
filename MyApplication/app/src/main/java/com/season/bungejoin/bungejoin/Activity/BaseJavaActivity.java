@@ -1,6 +1,12 @@
 package com.season.bungejoin.bungejoin.activity;
 
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.support.v4.content.LocalBroadcastManager;
+import android.view.DragEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -9,15 +15,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.season.bungejoin.bungejoin.R;
+import com.season.bungejoin.bungejoin.libs.me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Administrator on 2015/9/29.
  */
-public class BaseJavaActivity extends BaseActivity {
+public class BaseJavaActivity extends SwipeBackActivity {
     Spinner mSpinner;
     EditText mEtinput;
     TextView mTvdisplay;
     Button mBtnensure;
+    Button mBtnfinish;
     String [] array;
     int mint=0;
     short mshort=0;
@@ -31,6 +41,36 @@ public class BaseJavaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basejava_layout);
         init();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
     protected void init(){
@@ -51,6 +91,13 @@ public class BaseJavaActivity extends BaseActivity {
         mEtinput=(EditText)findViewById(R.id.edittext);
         mTvdisplay=(TextView)findViewById(R.id.textview);
         mBtnensure=(Button)findViewById(R.id.btn_ensure);
+        mBtnfinish=(Button)findViewById(R.id.btn_finish);
+        mBtnfinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mBtnensure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +135,19 @@ public class BaseJavaActivity extends BaseActivity {
                     toast(e.toString());
                     e.printStackTrace();}
                 display();
+            }
+        });
+        mBtnfinish.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mBtnfinish.startDrag(null, new View.DragShadowBuilder(mBtnfinish), null, 0);
+                return true;
+            }
+        });
+        mBtnfinish.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View v, DragEvent event) {
+                return true;
             }
         });
     }

@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -209,7 +211,6 @@ public class HomePageActivity extends BaseActivity {
         int color = (int) evaluator.evaluate(percent, color1, color2);
         return color;
     }
-
 
     protected int getNextColor() {
         Random random = new Random();

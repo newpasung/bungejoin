@@ -17,7 +17,7 @@ public class TextDialog extends Dialog {
     ImageView imageView;
     TextView textView;
     public TextDialog(Context context) {
-        super(context);
+        super(context,R.style.textdialog);
     }
 
     public TextDialog(Context context, int theme) {

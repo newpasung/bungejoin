@@ -1,9 +1,14 @@
 package com.season.bungejoin.bungejoin.activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.season.bungejoin.bungejoin.Constant.SharedPrefParameter;
 import com.season.bungejoin.bungejoin.storage.SharedPreferManager;
+
+import org.json.JSONObject;
+
+import java.io.File;
 
 public class LeadActivity extends BaseActivity{
 

@@ -3,9 +3,13 @@ package com.season.bungejoin.bungejoin.utils.HttpHelpers;
 import android.content.Context;
 
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.ResponseHandlerInterface;
 import com.loopj.android.http.SyncHttpClient;
 import com.season.bungejoin.bungejoin.JoinApplication;
+
+import org.apache.http.Header;
 
 /**
  * Created by Administrator on 2015/9/8.
@@ -50,6 +54,10 @@ public class HttpClient {
         params.put("token", JoinApplication.getInstance().getToken(context));
         params.put("userid",JoinApplication.getInstance().getUid(context));
         sClient.post(finalurl, params, handler);
+    }
+
+    public static void getByte(Context context,String url,AsyncHttpResponseHandler handler){
+        client.get(context, url,handler);
     }
 
 }

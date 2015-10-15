@@ -116,7 +116,6 @@ public class WorldFragment extends BaseFragment {
             Intent intent =new Intent (getActivity(), SinaWeiboActivity.class);
             startActivity(intent);
         }
-
     }
 
 }
